@@ -1,0 +1,79 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false">
+
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+		
+		<div class="fr">
+		<h2>Overview <small></small></h2>
+		</div>
+		<div class="jumbotron">
+			<div class="container">
+				 <div class="col-sm-12 col-md-12">
+				 	<!-- <div class="col-sm-6 col-md-6">
+				 		 <h3>Project List</h3><br>
+						<ul ng-repeat="project in projects">
+							<li>{{project}}</li>
+						</ul>
+					</div> -->
+					<div class="col-sm-3 col-md-3">
+						<h3>Flavor List</h3><br>
+						<ul ng-repeat="(key, value) in flavors">
+							<li>{{key}}</li>
+						</ul>
+					</div>
+					<div class="col-sm-3 col-md-3">
+						<h3>Instance List</h3><br>
+						<ul ng-repeat="(key, value) in instances">
+							<li>{{key}}</li>
+						</ul>
+						<div class="row">
+							<form role="form" class="bottom-75" ng-submit="getInstance('ff')">
+							 	<div><label>Get instance</label></div>
+								<input type="submit" class="button-primary" style="background-color:#ccc" name="Get instance details for ff" value="Get Instance" style="background:#ccc">
+										 
+							</form>
+						</div>
+					</div>
+					
+					<div class="col-sm-3 col-md-3">
+						<h3>Image List</h3><br>
+						
+						<ul ng-repeat="(key, value) in images">
+							<li>{{key}}</li>
+						</ul>
+					</div>
+					<div class="col-sm-3 col-md-3">
+						<form role="form" class="bottom-75" ng-submit="launchInstance(instance)">
+						<div class="table-form">
+							<div class="form-groups">
+								<div class="text-center"><label>Launch instance</label></div>
+								<div class="form-group">
+									<input type="text" class="form-control input-lg" ng-model="instance.name" placeholder="instancename">
+									</div>
+									<div class="form-group">
+									  <input type="text" class="form-control input-lg" ng-model="instance.flavor" placeholder="flavor">
+									</div>
+									<div class="form-group">					  
+										<input type="text" class="form-control input-lg" ng-model="instance.image" placeholder="image" required>
+									</div>
+									<div class="form-group">			
+									<input class="button-primary" type="submit" value="Launch" style="background-color:#ccc">
+									</div>
+							</div>	
+							
+						</div>
+						</form>
+					</div>
+				 </div>
+				  
+			</div>
+		</div>
+	</snap-content>	
+</div>

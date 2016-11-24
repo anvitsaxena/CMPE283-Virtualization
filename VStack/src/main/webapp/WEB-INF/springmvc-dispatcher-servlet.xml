@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+
+<context:component-scan base-package="com.vstack" />
+
+ <bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/webapp" />
+		<property name="suffix" value=".html" />
+ </bean>
+	
+	
+ <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+     <property name="mediaTypes" >
+         <value>
+             json=application/json
+             xml=application/xml
+             html=text/html
+         </value>
+     </property>
+     <property name="defaultContentType" value="application/json">
+     </property>
+  </bean>
+    
+    <bean name="bootstrap" init-method="start" class="com.vstack.services.Bootstrap" lazy-init="false" />
+	<bean name="authentication" class="com.vstack.openstack.services.AuthService" lazy-init="false" />
+	<bean name="connection" class="com.vstack.beans.OpenstackConnection" lazy-init="false" />
+	
+    
+ <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+ <mvc:annotation-driven/>
+
+</beans>
+
