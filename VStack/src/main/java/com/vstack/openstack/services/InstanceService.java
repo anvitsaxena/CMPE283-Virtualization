@@ -259,4 +259,41 @@ public class InstanceService {
 		return instanceList;
 	}
 	
+	/**
+	 * Delete Instance
+	 * 
+	 * @throws Exception
+	 */
+	public Map<String, String> deleteInstance(ComputeInstance computeInstance) throws  VStackException {
+		Map<String, String> instanceList = new HashMap<String, String>();
+		 
+		InstanceService instanceService = new InstanceService(server, token);
+		String imageref = instanceService.getImages().get(computeInstance.getImage());
+		
+		FlavorService flavorService = new FlavorService();
+		String flavorref = flavorService.getFlavors(server, token).get(computeInstance.getFlavor());
+		
+		String jsonInput = "{\"server\": {\"name\": \""+ computeInstance.getInstanceName() +"\", " +
+		"\"imageRef\": \"" + imageref + "\", "+
+		"\"flavorRef\": \""+ flavorref + "\", "+
+		"\"max_count\": 1, \"min_count\": 1,"+ 
+		"\"security_groups\": [{\"name\": \"default\"}]}"+
+		"}";
+		
+		try { 
+			OpenStackApiService apiService = new OpenStackApiService(server, token);
+			String response = apiService.launchInstance(jsonInput);
+			
+			JSONObject jsonObj = new JSONObject(response);
+			String serverID = jsonObj.getJSONObject("server").getString("id");
+			instanceList.put(computeInstance.getInstanceName(), serverID);
+			
+		} catch (Exception ex) {
+			logger.fatal(ex.getMessage());
+			VStackUtils.returnExceptionTrace(ex);
+			throw new VStackException(ex);
+		}
+		return instanceList;
+	}
+	
 }

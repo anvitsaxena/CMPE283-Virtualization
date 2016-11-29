@@ -16,6 +16,14 @@ angular.module('yapp').factory('APIService',
 						});
 					};*/
 					
+					/*$scope.getData=function(instanceName, callback){
+						$http({
+							method : 'GET',
+							url : 'getInstances.htm',
+							data : instanceName
+						});
+					}*/
+					
 					service.getFlavorList = function(callback) {
 						$http({
 							method : 'GET',
@@ -75,17 +83,12 @@ angular.module('yapp').factory('APIService',
 						});
 					};
 					
-					service.stopInstance = function(instanceName,flavor,image, callback) {
-						var instanceDetails = {
-								instanceName : instanceName,
-								flavor : flavor,
-								image : image,
-								status : "building"
-						};
+					service.stopInstance = function(instanceName, callback) {
+					
 						$http({
 							method : 'POST',
 							url : 'stopInstance.htm',
-							data : instanceDetails
+							data : instanceName
 						}).then(function(response) {
 							// success callback
 							callback(response);
@@ -95,25 +98,9 @@ angular.module('yapp').factory('APIService',
 						});
 					};
 					
-					service.deleteInstance = function(instanceName,flavor,image, callback) {
-						var instanceDetails = {
-								instanceName : instanceName,
-								flavor : flavor,
-								image : image,
-								status : "building"
-						};
-						$http({
-							method : 'POST',
-							url : 'deleteInstance.htm',
-							data : instanceDetails
-						}).then(function(response) {
-							// success callback
-							callback(response);
-						}, function(response) {
-							// failure callback
-							alert(response);
-						});
-					};
+					
+					
+					
 					
 					service.getInstance = function(instance, callback) {
 						

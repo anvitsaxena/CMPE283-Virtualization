@@ -268,4 +268,65 @@ public class ComputeController implements OpenstackAPI {
 			VStackUtils.handleRuntimeError(response, "Sorry, an error has occurred. Connection not added.");
 		}
 	}
+	
+	/**
+
+	* Resume Instance
+
+	* @param instance
+
+	* @param response
+
+	* @throws IOException
+
+	*/
+
+	@RequestMapping(value = "/resumeInstance", method = RequestMethod.POST)
+
+	public void resumeInstance(@RequestBody String instance, HttpServletResponse response) throws IOException {
+
+
+	if (connection != null) {
+
+	try {
+
+
+
+	logger.info("------ Resume Instance ------");
+
+	InstanceService instanceService = new InstanceService(connection.getServer(), authentication.getAuthToken());
+
+	Map<String, String> instances= instanceService.getInstances();
+
+
+	OpenStackApiService apiService = new OpenStackApiService(connection.getServer(), authentication.getAuthToken());
+
+	apiService.resumeInstance(instances.get(instance));
+
+
+	VStackUtils.handleResponse(response, "Instance Resumed.");
+
+	} catch (UnknownHostException ex) {
+
+	logger.fatal(VStackUtils.returnExceptionTrace(ex));
+
+	VStackUtils.handleRuntimeException(ex, response, "Unknown Host " + connection.getServer());
+
+	} catch (Exception ex) {
+
+	logger.fatal(ex.getMessage());
+
+	logger.fatal(VStackUtils.returnExceptionTrace(ex));
+
+	VStackUtils.handleRuntimeException(ex, response, "Failed to establish connection. ");
+
+	}
+
+	} else {
+
+	VStackUtils.handleRuntimeError(response, "Sorry, an error has occurred. Connection not added.");
+
+	}
+
+	}
 }

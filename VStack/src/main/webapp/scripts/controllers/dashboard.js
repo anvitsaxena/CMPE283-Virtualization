@@ -11,6 +11,7 @@ angular.module('yapp')
   .controller('DashboardCtrl', function($scope, $state, $rootScope, APIService) {
 	  
     $scope.$state = $state;
+   
     
     $scope.launchInstance = function (instance) {
         $scope.dataLoading = true;
@@ -27,7 +28,7 @@ angular.module('yapp')
 
     $scope.stopInstance = function (instance) {
         $scope.dataLoading = true;
-        APIService.stopInstance(instance.name, instance.flavor, instance.image, function(response) {
+        APIService.stopInstance(instance.name, function(response) {
             if(response.data) {
             	alert(response.data + " " + response.data.status);
         } else {
@@ -38,19 +39,7 @@ angular.module('yapp')
     });
     };
     
-    $scope.deleteInstance = function (instance) {
-        $scope.dataLoading = true;
-        APIService.deleteInstance(instance.name, instance.flavor, instance.image, function(response) {
-            if(response.data) {
-            	alert(response.data + " " + response.data.status);
-        } else {
-            $scope.error = response.message;
-            $scope.dataLoading = false;
-            alert("Instance not stopped");
-        }
-    });
-    };
-    
+
 	$scope.getInstance = function (instance) {
 	    $scope.dataLoading = true;
 	    APIService.getInstance(instance, function(response) {
@@ -64,7 +53,7 @@ angular.module('yapp')
 	    }
 	});
 	};
-
+	
    /* APIService.getProjects(function(response) {
         if(response.data) {
         	$scope.projects = response.data;
