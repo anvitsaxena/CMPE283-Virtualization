@@ -14,14 +14,20 @@ var states = [
         { name: 'dashboard', state: { url: '/dashboard', parent: 'base', templateUrl: 'views/dashboard.html', controller: 'DashboardCtrl', data: {text: "Dashboard", visible: false } } },
         { name: 'overview', state: { url: '/overview', parent: 'dashboard', templateUrl: 'views/dashboard/overview.html', data: {text: "Dashboard", visible: true } } },
         { name: 'instance', state: { url: '/instance', parent: 'dashboard', templateUrl: 'views/dashboard/instance.html', data: {text: "Services Management", visible: true } } },
-        { name: 'reports', state: { url: '/reports', parent: 'dashboard', templateUrl: 'views/dashboard/reports.html', data: {text: "Reports", visible: true } } },
+        { name: 'reports', state: { url: '/reports', parent: 'base', templateUrl: 'views/dashboard/reports.html', controller: 'ReportsCtrl', data: {text: "Monitoring", visible: true } } },
         { name: 'logout', state: { url: '/login', data: {text: "Logout", visible: true }} }
     ];
-   
+  
+google.load('visualization', '1', {packages: ['corechart']});
+google.setOnLoadCallback(function () {
+    angular.bootstrap(document.body, ['yapp']);
+});
+
 angular.module('yapp', [
                 'ui.router',
                 'snap',
-                'ngAnimate'
+                'ngAnimate',
+                'google-chart'
             ])
         .config(function($stateProvider, $urlRouterProvider) {
             $urlRouterProvider.when('/dashboard', '/dashboard/overview');

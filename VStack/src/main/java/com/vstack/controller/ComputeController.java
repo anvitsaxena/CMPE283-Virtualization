@@ -255,7 +255,7 @@ public class ComputeController implements OpenstackAPI {
 				OpenStackApiService apiService = new OpenStackApiService(connection.getServer(), authentication.getAuthToken());
 				apiService.stopInstance(instances.get(instance));
 				
-				VStackUtils.handleResponse(response, "Instance Deleted.");
+				VStackUtils.handleResponse(response, "Instance Stopped.");
 			} catch (UnknownHostException ex) {
 				logger.fatal(VStackUtils.returnExceptionTrace(ex));
 				VStackUtils.handleRuntimeException(ex, response, "Unknown Host " + connection.getServer());

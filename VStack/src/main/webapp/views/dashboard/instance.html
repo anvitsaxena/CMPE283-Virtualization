@@ -12,31 +12,16 @@
     </a>
 
     <div class="fr">
+     <h1 style="color:white">Menu
+      <p style="float:right">
+      <a class="btn btn-primary btn-lg btn-white" ui-sref="login">Logout</a>
+    </p></h1>
           
-  
-<h2>Menu</h2>
-</snap-content>
-</div>
-<p align="right"><br>
-        <a ui-sref="login" class="btn btn-success" ui-sref="overview">Logout</a>
-      </p>
-<!--<form>
-    <div class="button-container">
-          <div style="float:center">
-            <br><br><center><button class="btn btn-default login"><img src="images/button.png" alt=""></button><br> <br> <br>
-            <input type="radio" value="false"><b>Simple</b> &emsp; &emsp; &emsp; &emsp; &emsp;
-            <input type="radio" value="false"><b>Dynamic</b>
-            </center>
-            
-          </div>
-        </div>
-</form>   !-->
 <form role="form" onload="initialize()">
 <!--Static Web Service!-->
 <div class="container">
 <div class="row">
 <center><div class="panel panel-success center_div">
-
                             <div class="panel-heading">
                                 <h3 class="panel-title"><b>Static Web Service</b></h3>
                             </div>
@@ -65,6 +50,135 @@
                                 </select>
                             </div> -->
                             <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
+                         	<button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp;
+                            </div>
+                            
+                        </div> </center>
+                        </div>
+                        </div>
+
+                          
+						<!-- Dynamic Web Service! -->
+                        <div class="container center_div">
+                       <div class="container">
+                       <div class="row">
+                        <center><div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><b>Dynamic Web Service</b></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                <label style="color: black">Service Name</label>
+                                <input class="form-control" placeholder="Enter Service Name" ng-model="instance.name">
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Flavor</label>
+                                <select class="form-control" ng-model="instance.flavor" placeholder="Choose Flavor">
+                                   <option ng-repeat="(key, value) in flavors" value="{{key}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Server OS</label>
+                                <select class="form-control" ng-model="instance.image">
+                                    <option ng-repeat="(key, value) in images" value="{{key}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Web Server</label>
+                                <select class="form-control" ng-model="sensor.group">
+                                    <option selected>Web Server 1</option>
+                                    <option>Web Server 2</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Database Server</label>
+                                <select class="form-control" ng-model="sensor.group">
+                                    <option selected>DB Server 1</option>
+                                    <option>DB Server 2</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp;
+                            </div>
+                        </div></center>
+                        </div>
+                        </div>
+                            </form>
+                    </div>
+                </div> 
+
+
+
+
+
+
+<!-- <div>
+  <div ng-include="'menu.html'"></div>
+  <snap-dragger></snap-dragger>
+  <snap-content snap-opt-tap-to-close="false">
+  class="bg-dark">!
+
+    <a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+      <span class="menutoggle">
+        <i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+        <i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+      </span>
+    </a>
+
+    <div class="fr">
+          
+  
+<h2>Menu</h2>
+</div>
+
+<p align="right"><br>
+        <a ui-sref="login" class="btn btn-success" ui-sref="overview">Logout</a>
+      </p>
+<form>
+    <div class="button-container">
+          <div style="float:center">
+            <br><br><center><button class="btn btn-default login"><img src="images/button.png" alt=""></button><br> <br> <br>
+            <input type="radio" value="false"><b>Simple</b> &emsp; &emsp; &emsp; &emsp; &emsp;
+            <input type="radio" value="false"><b>Dynamic</b>
+            </center>
+            
+          </div>
+        </div>
+</form>   !
+<form role="form" onload="initialize()">
+Static Web Service!
+<div class="container">
+<div class="row">
+<center><div class="panel panel-success center_div">
+
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><b>Static Web Service</b></h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group">
+                                <label style="color: black"> Service Name</label>
+                                <input class="form-control" ng-model="instance.name" placeholder="Enter Service Name">
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Flavor</label>
+                                <select class="form-control" ng-model="instance.flavor" placeholder="Choose Flavor">
+                                   <option ng-repeat="(key, value) in flavors" value="{{key}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Server OS</label>
+                                <select class="form-control" ng-model="instance.image">
+                                    <option ng-repeat="(key, value) in images" value="{{key}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Web Server</label>
+                                <select class="form-control">
+                                    <option selected>Web Server 1</option>
+                                    <option>Web Server 2</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
                             <button type="submit" class="btn btn-danger" ng-click="stopInstance(instance)">Stop </button>
                             </div>
                             
@@ -73,8 +187,8 @@
                         </div>
                           
 
-                        <!--Dynamic Web Service!-->
-                       <!-- <div class="container center_div">!-->
+                        Dynamic Web Service!
+                       <div class="container center_div">
                        <div class="container">
                        <div class="row">
                         <center><div class="panel panel-success">
@@ -122,9 +236,6 @@
                     </div>
                 </div> 
 
-
-
-
-
-
-
+</snap-content>
+</div>
+--> 
