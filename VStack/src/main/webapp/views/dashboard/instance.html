@@ -49,7 +49,15 @@
                                     <option>Web Server 2</option>
                                 </select>
                             </div> -->
+                            <div class="form-group">
+                                <label style="color: black">Choose Network</label>
+                                <select class="form-control" ng-model="sensor.group">
+                                    <option>Network 1</option>
+                                    <option>Network 2</option>
+                                </select>
+                            </div>
                             <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-info" ng-click="deleteInstance(instance)">Delete </button>&nbsp;&nbsp;
                          	<button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp;
                             </div>
                             
@@ -81,6 +89,13 @@
                                 <label style="color: black">Server OS</label>
                                 <select class="form-control" ng-model="instance.image">
                                     <option ng-repeat="(key, value) in images" value="{{key}}">{{key}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label style="color: black">Choose Network</label>
+                                <select class="form-control" ng-model="sensor.group">
+                                    <option>Network 1</option>
+                                    <option>Network 2</option>
                                 </select>
                             </div>
                             <div class="form-group">

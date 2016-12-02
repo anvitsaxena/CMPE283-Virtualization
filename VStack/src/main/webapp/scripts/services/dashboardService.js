@@ -98,7 +98,35 @@ angular.module('yapp').factory('APIService',
 						});
 					};
 					
+					service.deleteInstance = function(instanceName, callback) {
+						
+						$http({
+							method : 'POST',
+							url : 'deleteInstance.htm',
+							data : instanceName
+						}).then(function(response) {
+							// success callback
+							callback(response);
+						}, function(response) {
+							// failure callback
+							alert(response);
+						});
+					};
 					
+					service.resumeInstance = function(instanceName, callback) {
+						
+						$http({
+							method : 'POST',
+							url : 'resumeInstance.htm',
+							data : instanceName
+						}).then(function(response) {
+							// success callback
+							callback(response);
+						}, function(response) {
+							// failure callback
+							alert(response);
+						});
+					};
 					
 					
 					

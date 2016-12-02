@@ -42,7 +42,35 @@ angular.module('yapp')
     });
     };
     
-
+    $scope.deleteInstance = function (instance) {
+        $scope.dataLoading = true;
+        APIService.resumeInstance(instance, function(response) {
+            if(response.data) {
+            	alert(response.data + " " + response.data.status);
+            	
+        } else {
+            $scope.error = response.message;
+            $scope.dataLoading = false;
+            alert("Instance not deleted");
+        }
+    });
+    };
+    
+    
+    $scope.resumeInstance = function (instance) {
+        $scope.dataLoading = true;
+        APIService.resumeInstance(instance, function(response) {
+            if(response.data) {
+            	alert(response.data + " " + response.data.status);
+            	
+        } else {
+            $scope.error = response.message;
+            $scope.dataLoading = false;
+            alert("Instance not resumed");
+        }
+    });
+    };
+    
 	$scope.getInstance = function (instance) {
 	    $scope.dataLoading = true;
 	    APIService.getInstance(instance, function(response) {
