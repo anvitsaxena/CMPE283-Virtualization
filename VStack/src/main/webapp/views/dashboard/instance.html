@@ -13,15 +13,15 @@
 
     <div class="fr">
      <h1 style="color:white">Menu
-      <p style="float:right">
+       <p style="float:right">
       <a class="btn btn-primary btn-lg btn-white" ui-sref="login">Logout</a>
     </p></h1>
           
 <form role="form" onload="initialize()">
 <!--Static Web Service!-->
 <div class="container">
-<div class="row">
-<center><div class="panel panel-success center_div">
+<div class="row" style="width:1100px">
+<div class="panel panel-success center_div">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><b>Static Web Service</b></h3>
                             </div>
@@ -56,21 +56,20 @@
                                     <option>Network 2</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
-                            <button type="submit" class="btn btn-info" ng-click="deleteInstance(instance)">Delete </button>&nbsp;&nbsp;
-                         	<button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp;
+                            <center><button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
+                         	<button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button></center>&nbsp;&nbsp;
                             </div>
                             
-                        </div> </center>
+                        </div> 
                         </div>
                         </div>
 
                           
 						<!-- Dynamic Web Service! -->
-                        <div class="container center_div">
+                        
                        <div class="container">
-                       <div class="row">
-                        <center><div class="panel panel-success">
+                       <div class="row" style="width:1100px">
+                        <div class="panel panel-success">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><b>Dynamic Web Service</b></h3>
                             </div>
@@ -112,10 +111,10 @@
                                     <option>DB Server 2</option>
                                 </select>
                             </div>
-                            <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
-                            <button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp;
+                           <center> <button type="submit" class="btn btn-info" ng-click="launchInstance(instance)">Start </button>&nbsp;&nbsp;
+                            <button type="submit" class="btn btn-success" ui-sref="overview">View Instances</button>&nbsp;&nbsp; </center>
                             </div>
-                        </div></center>
+                        </div>
                         </div>
                         </div>
                             </form>
