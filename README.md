@@ -24,4 +24,4 @@ Project includes :
 
 
 <img width="1280" alt="screen shot 2016-11-02 at 12 42 17 am" src="https://cloud.githubusercontent.com/assets/18491653/19920340/663ea5ec-a095-11e6-916a-be015f2f0735.png">
-<img width="1032" alt="screen shot 2016-11-02 at 12 43 16 am" src="https://cloud.githubusercontent.com/assets/18491653/19920342/682ca1f6-a095-11e6-8b09-fa4445ef49fc.png">
+
